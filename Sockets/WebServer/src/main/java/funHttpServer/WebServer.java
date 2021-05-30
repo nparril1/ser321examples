@@ -248,7 +248,8 @@ class WebServer {
           builder.append("HTTP/1.1 200 OK\n");
           builder.append("Content-Type: text/html; charset=utf-8\n");
           builder.append("\n");
-          builder.append("Owner Login       Owner ID       Repository\n");
+          builder.append("Owner Login       Owner ID       Repository");
+          builder.append("\n");
           System.out.println("Owner Login       Owner ID       Repository");
 
           try {
@@ -270,7 +271,8 @@ class WebServer {
               String login = (String) user.get("login");
 
               System.out.println(login + "  --  " + user.get("id") + "  -->  " + repository);
-              builder.append(login + "  --  " + user.get("id") + "  -->  " + repository + "\n");
+              builder.append(login + "  --  " + user.get("id") + "  -->  " + repository);
+              builder.append("\n");
             }
 
           } catch (Exception e) {
