@@ -24,4 +24,12 @@ task FunWebServer(type: JavaExec) {
   standardInput = System.in
 }
 
+repositories {
+  jcenter()
+}
+
+dependencies {
+  compile group: 'com.googlecode.json-simple', name: 'json-simple', version: '1.1.1'
+}
+
 

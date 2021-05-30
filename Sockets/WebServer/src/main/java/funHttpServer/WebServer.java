@@ -26,6 +26,10 @@ import java.util.Map;
 import java.util.LinkedHashMap;
 import java.nio.charset.Charset;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
+
 class WebServer {
   public static void main(String args[]) {
     WebServer server = new WebServer(9000);
@@ -248,6 +252,32 @@ class WebServer {
           // amehlhase, 46384989 -> memoranda
           // amehlhase, 46384989 -> ser316examples
           // amehlhase, 46384989 -> test316
+          System.out.println("Owner Login       Owner ID       Repository");
+
+          try {
+            // Parse through JSON file
+            JSONParser parser = new JSONParser();
+            Object obj = parser.parse(json);
+
+            JSONArray info = (JSONArray) obj;
+
+            // Get information from JSON file
+            for (Object o : info) {
+              JSONObject name = (JSONObject) o;
+
+              // Get repository name
+              String repository = (String) name.get("name");
+
+              // Get owner's login and id
+              JSONObject user = (JSONObject) name.get("owner");
+              String login = (String) user.get("login");
+
+              System.out.println(login + "  --  " + user.get("id") + "  -->  " + repository);
+            }
+
+          } catch (Exception e) {
+            e.printStackTrace();
+          }
 
         } else {
           // if the request is not recognized at all
