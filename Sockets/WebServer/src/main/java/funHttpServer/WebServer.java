@@ -245,13 +245,7 @@ class WebServer {
           String json = fetchURL("https://api.github.com/" + query_pairs.get("query"));
           System.out.println(json);
 
-          builder.append("Check the todos mentioned in the Java source file");
-          // TODO: Parse the JSON returned by your fetch and create an appropriate
-          // response
-          // and list the owner name, owner id and name of the public repo on your webpage, e.g.
-          // amehlhase, 46384989 -> memoranda
-          // amehlhase, 46384989 -> ser316examples
-          // amehlhase, 46384989 -> test316
+          builder.append("Owner Login       Owner ID       Repository");
           System.out.println("Owner Login       Owner ID       Repository");
 
           try {
@@ -273,6 +267,7 @@ class WebServer {
               String login = (String) user.get("login");
 
               System.out.println(login + "  --  " + user.get("id") + "  -->  " + repository);
+              builder.append(login + "  --  " + user.get("id") + "  -->  " + repository);
             }
 
           } catch (Exception e) {
